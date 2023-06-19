@@ -1,0 +1,7 @@
+# vars.yml
+client_image: 
+backend_image: 
+app_folder: 
+file_folder: 
+dest_folder: 
+terrafom_folder: "./Stage_two/"
