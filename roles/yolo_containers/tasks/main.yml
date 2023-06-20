@@ -4,17 +4,17 @@
   block:
     - name: Clone the code from GitHub
       git:
-        repo: https://github.com/mouricesammy/yolo.git
+        repo: https://github.com/franciskinyuru/yolo.git
         dest: "{{ dest_folder }}"
         clone: yes
         update: yes
 
-    - name: Pull client image
+    - name: Pull the client image
       community.docker.docker_image:
         name: "{{ client_image }}"
         source: pull
 
-    - name: Pull backend image
+    - name: Pull the backend image
       community.docker.docker_image:
         name: "{{ backend_image }}"
         source: pull
@@ -26,7 +26,7 @@
 
     - name: Copy docker-compose file from repo to folder
       ansible.builtin.template:
-        src: ../Yolo_App/docker-compose.yml
+        src: ../yolo/docker-compose.yml
         dest: "{{ app_folder }}/docker-compose.yaml"
 
     - name: Start containers

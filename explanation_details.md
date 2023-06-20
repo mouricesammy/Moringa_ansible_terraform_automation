@@ -5,60 +5,41 @@
  ## prerequisites 
   1. install vagrant
   2. Install virtual box.
+  3. Install terraform.
+  4. Install Ansible.
 
 ## Step 1
- Provision a geerlingguy/ubuntu2004 using vagrant manually on you machine.
- Create a new directory and cd to this directory and run below command
- `
- vagrant init geerlingguy/ubuntu2004
+ Provision a geerlingguy/ubuntu2004 using vagrant using ansible and terraform.
 
-`
-a vagrant file will be created in the current folder
-
-Open the vagrantfile in a text editor and uncomment the below lines
-
-`
-config.vm.box = "geerlingguy/ubuntu2004"
-config.vm.network "forwarded_port", guest: 80, host: 8080
-vb.memory = "1024"
-end
-config.vm.provider "virtualbox" do |vb|
-`
-you can add below line to allow download without ssl validation
-
-`
-config.vm.box_download_insecure = true
-`
-
-Save the vagrant file.
-
-Then run below command to download the ubuntu virtual machine
-`
-vagrant up
-
-`
-Then run below to access the virtual machine
-
-`
-vagrant ssh
-`
+ - create a new branch by the name Stage_two from the main branch.
+ - Create a new directory called Stage_two.
+ - Change directory to Stage_two
+ - create a provider.tf file and add the vagrant provider config.
+ - create a variables.tf file to store the variables to be used
+ - create a main.tf file where you will add the task for provisioning an ubuntu machine.
+ - Run command ` terraform init ` to initialized and load the provider
 
 ## Step 2 
+Provision an ubuntu virtual machine using ansible and  
+Clone and deploy the yolo application in docker desktop.
+   ## Deploying the Yolo app
+   As has been done in the main branch
 
-To clone and deploy the yolo application in docker desktop.
+  ## Provision the ubuntu virtual machine.
+Create a new folder in the roles directory called terraform and then a tasks directory in the created directory.
 
-Create a vars.yml file for add the variables
-Create a roles directory then a task directory the a main.yml file for the container roles
+Create a main.yml file in the roles/terraform/tasks path 
 
-In the main.yml define the tasks of clone the repository.
+Add the tasks to be executed to deploy the ubuntu machine in main.yml file with includes but not limited to :-
+- initialization
+- plan
+- validate
+- apply 
 
-Tasks for Building the client and backend images
-
-create a new folder and copy the docker-compose.yaml file to the created directory from the cloned project
-
-Define tasks to run the containers form the docker-compose.yml file.
-
-Confirm the services are running and accessible by running below command and making sure all the steps/tasks are being run successfully.
+finaly run below command to provision and deploy Yolo app
 
 `
-ansible-playbook playbook.yml --tags containers
+ansible-playbook playbook.yml --tags all
+`
+
+Confirm the VM has been deployed and the Yolo app are up and running successfully.
