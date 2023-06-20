@@ -1,7 +1,7 @@
 # vars.yml
-client_image: 
-backend_image: 
-app_folder: 
-file_folder: 
-dest_folder: 
+client_image: "mourice/yolo-frontend"
+backend_image: "mourice/backend"
+app_folder: "/opt/yolo"
+file_folder: "/Users/mouriceoronje/Projects/personal/Moringa\ School\ Tests/yolo"
+dest_folder: "/Users/mouriceoronje/Projects/personal/Moringa\ School\ Tests/Yolo_App"
 terrafom_folder: "./Stage_two/"
